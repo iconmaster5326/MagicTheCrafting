@@ -1,7 +1,5 @@
 package info.iconmaster.minethecrafting.blocks;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 import info.iconmaster.minethecrafting.tes.TileEntityManaTap;
@@ -11,8 +9,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext.Builder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -20,11 +16,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 public class BlockManaTap extends Block {
 
   public BlockManaTap() {
-    super(Block.Properties.create(Material.ANVIL));
+    super(Block.Properties.create(Material.ANVIL).hardnessAndResistance(5).harvestTool(ToolType.PICKAXE)
+        .setRequiresTool());
   }
 
   @Override

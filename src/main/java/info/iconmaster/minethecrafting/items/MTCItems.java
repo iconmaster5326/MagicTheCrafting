@@ -25,6 +25,8 @@ public class MTCItems {
             () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
     public static final RegistryObject<Item> GREEN_MANA = ITEM_REGISTRY.register("green_mana",
             () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+    public static final RegistryObject<Item> BLANK_CARD = ITEM_REGISTRY.register("blank_card",
+            () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
 
     public static void register() {
         ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

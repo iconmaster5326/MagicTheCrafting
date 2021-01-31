@@ -1,0 +1,19 @@
+{
+    "criteria": {
+        "item": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minethecrafting:blank_card"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "recipes": [
+            "minethecrafting:manatap"
+        ]
+    }
+}

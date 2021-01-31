@@ -1,0 +1,37 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "aba",
+        "cdc",
+        "eee"
+    ],
+    "key":
+    {
+        "a":
+        {
+            "tag": "forge:ingots/iron"
+        },
+        "b":
+        {
+            "tag": "forge:gems/lapis"
+        },
+        "c":
+        {
+            "tag": "forge:glass/colorless"
+        },
+        "d":
+        {
+            "item": "minethecrafting:blank_card"
+        },
+        "e":
+        {
+            "item": "minecraft:smooth_stone_slab"
+        }
+    },
+    "result":
+    {
+        "item": "minethecrafting:manatap",
+        "count": 1
+    }
+}

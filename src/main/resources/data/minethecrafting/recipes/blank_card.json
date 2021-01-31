@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        "xyx",
+        "xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "minecraft:paper"
+        },
+        "y":
+        {
+            "tag": "forge:nuggets/gold"
+        }
+    },
+    "result":
+    {
+        "item": "minethecrafting:blank_card",
+        "count": 8
+    }
+}
