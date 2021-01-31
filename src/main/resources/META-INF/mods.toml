@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT"
+# issueTrackerURL=""
+
+[[mods]]
+modId="minethecrafting"
+version="${file.jarVersion}"
+displayName="Magic: The Crafting"
+# updateJSONURL=""
+# displayURL=""
+logoFile="minethecrafting.png"
+# credits=""
+authors="iconmaster5326"
+description='''
+Magic: The Gathering, but in Minecraft for some reason.
+'''
+
+[[dependencies.minethecrafting]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.minethecrafting]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
