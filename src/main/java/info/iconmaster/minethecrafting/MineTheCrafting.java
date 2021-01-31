@@ -1,5 +1,7 @@
 package info.iconmaster.minethecrafting;
 
+import java.util.Random;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +14,8 @@ import info.iconmaster.minethecrafting.screens.ScreenManaTap;
 import info.iconmaster.minethecrafting.tes.MTCTileEntities;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.PlayerContainer;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -66,4 +70,16 @@ public class MineTheCrafting {
             }
         }
     }
+
+    public static final ItemGroup ITEM_GROUP = (new ItemGroup(MOD_ID) {
+        ItemStack randomMana = null;
+
+        @Override
+        public ItemStack createIcon() {
+            if (randomMana == null) {
+                randomMana = new ItemStack(Mana.values()[new Random().nextInt(Mana.values().length)].item());
+            }
+            return randomMana;
+        }
+    });
 }

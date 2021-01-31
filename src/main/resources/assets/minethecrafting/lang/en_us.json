@@ -10,5 +10,6 @@
     "item.minethecrafting.card_lightning_bolt": "Spell: Lightning Bolt",
     "subtitle.minethecrafting.spell_consume_mana": "Spell consuming mana",
     "subtitle.minethecrafting.spell_ready": "Spell ready to cast",
-    "subtitle.minethecrafting.spell_cast": "Spell cast"
+    "subtitle.minethecrafting.spell_cast": "Spell cast",
+    "itemGroup.minethecrafting": "Mine: The Crafting"
 }

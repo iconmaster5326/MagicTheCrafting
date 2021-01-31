@@ -6,7 +6,6 @@ import info.iconmaster.minethecrafting.MineTheCrafting;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,7 +22,7 @@ public class MTCBlocks {
 
     private static <T extends Block> RegistryObject<T> createRegistryObject(String name, Supplier<T> t) {
         RegistryObject<T> block = BLOCK_REGISTRY.register(name, t);
-        ITEM_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties().group(ItemGroup.MISC)));
+        ITEM_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties().group(MineTheCrafting.ITEM_GROUP)));
         return block;
     }
 

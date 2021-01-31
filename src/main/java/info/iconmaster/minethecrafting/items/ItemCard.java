@@ -39,7 +39,7 @@ public abstract class ItemCard extends Item {
     public static final Set<ItemCard> ALL_CARDS = new HashSet<>();
 
     protected ItemCard(Mana color, List<Mana> manaCost) {
-        super(new Item.Properties().maxStackSize(1).group(ItemGroup.MISC));
+        super(new Item.Properties().maxStackSize(1).group(MineTheCrafting.ITEM_GROUP));
         this.color = color;
         this.manaCost = manaCost;
         ALL_CARDS.add(this);
