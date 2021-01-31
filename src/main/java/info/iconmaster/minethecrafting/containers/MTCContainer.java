@@ -7,8 +7,6 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IntArray;
-import net.minecraft.util.math.BlockPos;
 
 public abstract class MTCContainer extends Container {
     protected MTCContainer(ContainerType<?> type, int windowID) {

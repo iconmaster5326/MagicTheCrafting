@@ -80,9 +80,9 @@ public class ManaTapRegistry {
         register("minecraft:shattered_savanna_plateau", Arrays.asList(Mana.WHITE, Mana.RED));
         register("minecraft:plains", Arrays.asList(Mana.WHITE));
         register("minecraft:sunflower_plains", Arrays.asList(Mana.WHITE));
-        register("minecraft:desert", Arrays.asList());
-        register("minecraft:desert_hills", Arrays.asList());
-        register("minecraft:desert_lakes", Arrays.asList());
+        register("minecraft:desert", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:desert_hills", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:desert_lakes", Arrays.asList(Mana.COLORLESS));
         register("minecraft:snowy_tundra", Arrays.asList(Mana.BLUE));
         register("minecraft:snowy_mountains", Arrays.asList(Mana.BLUE, Mana.RED));
         register("minecraft:ice_spikes", Arrays.asList(Mana.BLUE, Mana.RED));
@@ -91,11 +91,11 @@ public class ManaTapRegistry {
         register("minecraft:gravelly_mountains", Arrays.asList(Mana.RED));
         register("minecraft:modified_gravelly_mountains", Arrays.asList(Mana.RED));
         register("minecraft:mountain_edge", Arrays.asList(Mana.RED));
-        register("minecraft:badlands", Arrays.asList());
-        register("minecraft:badlands_plateau", Arrays.asList());
-        register("minecraft:modified_badlands_plateau", Arrays.asList());
-        register("minecraft:wooded_badlands_plateau", Arrays.asList());
-        register("minecraft:modified_wooded_badlands_plateau", Arrays.asList());
-        register("minecraft:eroded_badlands", Arrays.asList());
+        register("minecraft:badlands", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:badlands_plateau", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:modified_badlands_plateau", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:wooded_badlands_plateau", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:modified_wooded_badlands_plateau", Arrays.asList(Mana.COLORLESS));
+        register("minecraft:eroded_badlands", Arrays.asList(Mana.COLORLESS));
     }
 }
