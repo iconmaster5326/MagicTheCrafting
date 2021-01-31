@@ -1,12 +1,16 @@
 package info.iconmaster.minethecrafting.blocks;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
+import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.tes.TileEntityManaTap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.tileentity.TileEntity;
@@ -17,6 +21,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class BlockManaTap extends Block {
 
@@ -39,9 +44,15 @@ public class BlockManaTap extends Block {
   public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
       Hand handIn, BlockRayTraceResult hit) {
     if (!worldIn.isRemote) {
-      INamedContainerProvider inamedcontainerprovider = this.getContainer(state, worldIn, pos);
-      if (inamedcontainerprovider != null) {
-        player.openContainer(inamedcontainerprovider);
+      TileEntityManaTap te = (TileEntityManaTap) this.getContainer(state, worldIn, pos);
+      if (te != null) {
+        NetworkHooks.openGui((ServerPlayerEntity) player, te, packet -> {
+          List<Mana> manaGeneratable = te.manaGeneratable();
+          packet.writeByte(manaGeneratable.size());
+          for (Mana mana : manaGeneratable) {
+            packet.writeByte(mana.ordinal());
+          }
+        });
       }
     }
     return ActionResultType.SUCCESS;

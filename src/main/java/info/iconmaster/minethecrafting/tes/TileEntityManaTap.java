@@ -1,15 +1,13 @@
 package info.iconmaster.minethecrafting.tes;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.google.common.collect.Lists;
+import javax.annotation.Nullable;
 
 import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.ManaTapRegistry;
 import info.iconmaster.minethecrafting.containers.ContainerManaTap;
-import info.iconmaster.minethecrafting.items.MTCItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ItemStackHelper;
@@ -17,6 +15,8 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.IIntArray;
@@ -128,6 +128,32 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
         data.progress = compound.getInt("progress");
 
         return compound;
+    }
+
+    @Override
+    @Nullable
+    public SUpdateTileEntityPacket getUpdatePacket() {
+        CompoundNBT tag = getUpdateTag();
+        return new SUpdateTileEntityPacket(this.pos, 0, tag);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+        CompoundNBT tag = pkt.getNbtCompound();
+        BlockState state = world.getBlockState(pos);
+        handleUpdateTag(state, tag);
+    }
+
+    @Override
+    public CompoundNBT getUpdateTag() {
+        CompoundNBT tag = new CompoundNBT();
+        write(tag);
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+        read(state, tag);
     }
 
     public List<Mana> manaGeneratable() {
