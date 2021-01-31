@@ -1,0 +1,5 @@
+{
+    "parent": "forge:item/default",
+    "loader": "minethecrafting:card_loader",
+    "art": "minethecrafting:item/card_art/lightning_bolt"
+}

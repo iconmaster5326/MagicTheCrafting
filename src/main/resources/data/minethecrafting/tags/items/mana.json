@@ -1,0 +1,10 @@
+{
+    "values": [
+        "minethecrafting:white_mana",
+        "minethecrafting:blue_mana",
+        "minethecrafting:black_mana",
+        "minethecrafting:red_mana",
+        "minethecrafting:green_mana",
+        "minethecrafting:colorless_mana"
+    ]
+}

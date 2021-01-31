@@ -1,5 +1,8 @@
 package info.iconmaster.minethecrafting.items;
 
+import java.util.Arrays;
+
+import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.MineTheCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -30,6 +33,9 @@ public class MTCItems {
 
     public static final RegistryObject<Item> BLANK_CARD = ITEM_REGISTRY.register("blank_card",
             () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+
+    public static final RegistryObject<Item> CARD_LIGHTNING_BOLT = ITEM_REGISTRY.register("card_lightning_bolt",
+            () -> new ItemCard(Mana.RED, Arrays.asList(Mana.RED)));
 
     public static void register() {
         ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

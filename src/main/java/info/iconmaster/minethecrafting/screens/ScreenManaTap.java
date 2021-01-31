@@ -59,7 +59,7 @@ public class ScreenManaTap extends ContainerScreen<ContainerManaTap> {
 
                 int i = 0;
                 for (Mana mana : container.manaGeneratable) {
-                        getMinecraft().getTextureManager().bindTexture(mana.texture());
+                        getMinecraft().getTextureManager().bindTexture(mana.fullTextureLocation());
                         blit(ms, statusOriginX + statusIconWidth + fontRenderer.getStringWidth(part1)
                                         + statusIconWidth * i + 2, originY + STATUS_Y - 1, 0, 0, STATUS_H, STATUS_H,
                                         STATUS_H, STATUS_H);

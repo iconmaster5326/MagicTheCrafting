@@ -38,8 +38,20 @@ public enum Mana {
         return null;
     }
 
-    public ResourceLocation texture() {
-        return new ResourceLocation(MineTheCrafting.MOD_ID + ":textures/item/" + resourcePrefix + "_mana.png");
+    public ResourceLocation textureLocation() {
+        return new ResourceLocation(MineTheCrafting.MOD_ID, "item/" + resourcePrefix + "_mana");
+    }
+
+    public ResourceLocation fullTextureLocation() {
+        return new ResourceLocation(MineTheCrafting.MOD_ID, "textures/item/" + resourcePrefix + "_mana.png");
+    }
+
+    public ResourceLocation cardFrontTextureLocation() {
+        return new ResourceLocation(MineTheCrafting.MOD_ID, "item/" + resourcePrefix + "_card_front");
+    }
+
+    public ResourceLocation fullCardFrontTextureLocation() {
+        return new ResourceLocation(MineTheCrafting.MOD_ID, "textures/item/" + resourcePrefix + "_card_front.png");
     }
 
     public static Mana fromItem(Item item) {

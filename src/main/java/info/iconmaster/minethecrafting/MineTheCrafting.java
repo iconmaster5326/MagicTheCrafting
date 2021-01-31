@@ -5,12 +5,19 @@ import org.apache.logging.log4j.Logger;
 
 import info.iconmaster.minethecrafting.containers.MTCContainers;
 import info.iconmaster.minethecrafting.blocks.MTCBlocks;
+import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
+import info.iconmaster.minethecrafting.models.CardLoader;
 import info.iconmaster.minethecrafting.screens.ScreenManaTap;
 import info.iconmaster.minethecrafting.tes.MTCTileEntities;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.inventory.container.PlayerContainer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -35,5 +42,28 @@ public class MineTheCrafting {
     @SubscribeEvent
     public static void setupClient(final FMLClientSetupEvent event) {
         ScreenManager.registerFactory(MTCContainers.MANA_TAP.get(), ScreenManaTap::new);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void registerModelLoaders(final ModelRegistryEvent event) {
+        ModelLoaderRegistry.registerLoader(new ResourceLocation(MOD_ID, "card_loader"), new CardLoader());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void registerTextures(final TextureStitchEvent.Pre event) {
+        if (event.getMap().getTextureLocation().equals(PlayerContainer.LOCATION_BLOCKS_TEXTURE)) {
+            for (Mana mana : Mana.values()) {
+                event.addSprite(mana.cardFrontTextureLocation());
+            }
+
+            for (ItemCard card : ItemCard.ALL_CARDS) {
+                ResourceLocation art = card.cardArt();
+                if (art != null) {
+                    event.addSprite(art);
+                }
+            }
+        }
     }
 }
