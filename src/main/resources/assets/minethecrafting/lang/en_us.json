@@ -6,5 +6,9 @@
     "item.minethecrafting.red_mana": "Red Mana",
     "item.minethecrafting.green_mana": "Green Mana",
     "item.minethecrafting.colorless_mana": "Colorless Mana",
-    "item.minethecrafting.blank_card": "Blank Spell"
+    "item.minethecrafting.blank_card": "Blank Spell",
+    "item.minethecrafting.card_lightning_bolt": "Spell: Lightning Bolt",
+    "subtitle.minethecrafting.spell_consume_mana": "Spell consuming mana",
+    "subtitle.minethecrafting.spell_ready": "Spell ready to cast",
+    "subtitle.minethecrafting.spell_cast": "Spell cast"
 }

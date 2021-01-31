@@ -35,7 +35,7 @@ public class MTCItems {
             () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
 
     public static final RegistryObject<Item> CARD_LIGHTNING_BOLT = ITEM_REGISTRY.register("card_lightning_bolt",
-            () -> new ItemCard(Mana.RED, Arrays.asList(Mana.RED)));
+            () -> new CardLightningBolt());
 
     public static void register() {
         ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

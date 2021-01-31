@@ -1,0 +1,23 @@
+{
+    "spell_consume_mana": {
+        "category": "player",
+        "subtitle": "subtitle.minethecrafting.spell_consume_mana",
+        "sounds": [
+            "minecraft:note/pling"
+        ]
+    },
+    "spell_ready": {
+        "category": "player",
+        "subtitle": "subtitle.minethecrafting.spell_ready",
+        "sounds": [
+            "minecraft:random/orb"
+        ]
+    },
+    "spell_cast": {
+        "category": "player",
+        "subtitle": "subtitle.minethecrafting.spell_cast",
+        "sounds": [
+            "minecraft:mob/ghast/fireball4"
+        ]
+    }
+}
