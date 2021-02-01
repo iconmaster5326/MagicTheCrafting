@@ -16,11 +16,11 @@ import com.google.gson.JsonParseException;
 import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.MineTheCrafting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
@@ -29,6 +29,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -188,4 +192,16 @@ public abstract class ItemCard extends Item {
     }
 
     public abstract void fireSpell(ItemStack stack, World world, PlayerEntity player);
+
+    @Override
+    public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        super.addInformation(stack, world, tooltip, flag);
+
+        tooltip.add(new TranslationTextComponent(
+                "tooltip." + MineTheCrafting.MOD_ID + "." + getRegistryName().getPath() + ".1")
+                        .append(new StringTextComponent(" - ")).append(Mana.asTextComponent(manaCost)));
+        tooltip.add(new TranslationTextComponent(
+                "tooltip." + MineTheCrafting.MOD_ID + "." + getRegistryName().getPath() + ".2")
+                        .mergeStyle(TextFormatting.DARK_GRAY));
+    }
 }

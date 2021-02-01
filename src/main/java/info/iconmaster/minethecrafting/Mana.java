@@ -2,21 +2,29 @@ package info.iconmaster.minethecrafting;
 
 import java.util.Arrays;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import info.iconmaster.minethecrafting.items.MTCItems;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public enum Mana {
-    WHITE("white"), BLUE("blue"), BLACK("black"), RED("red"), GREEN("green"), COLORLESS("colorless");
+    WHITE("white", TextFormatting.WHITE), BLUE("blue", TextFormatting.BLUE), BLACK("black", TextFormatting.DARK_GRAY),
+    RED("red", TextFormatting.RED), GREEN("green", TextFormatting.GREEN), COLORLESS("colorless", TextFormatting.GRAY);
 
     private final String resourcePrefix;
+    private final TextFormatting color;
 
-    private Mana(String resourcePrefix) {
+    private Mana(String resourcePrefix, TextFormatting color) {
         this.resourcePrefix = resourcePrefix;
+        this.color = color;
     }
 
     public Item item() {
@@ -85,5 +93,39 @@ public enum Mana {
 
     public List<Mana> usableToPayFor() {
         return usableToPayForMap.get(this);
+    }
+
+    public String characterLangKey() {
+        return "manachar." + MineTheCrafting.MOD_ID + "." + resourcePrefix;
+    }
+
+    public String character() {
+        return I18n.format(characterLangKey());
+    }
+
+    public TextFormatting color() {
+        return color;
+    }
+
+    public static IFormattableTextComponent asTextComponent(Iterable<Mana> manas) {
+        IFormattableTextComponent result = new StringTextComponent("");
+        int nColorless = 0;
+        boolean manasEmpty = true;
+
+        for (Mana mana : manas) {
+            manasEmpty = false;
+
+            if (mana == COLORLESS) {
+                nColorless++;
+            } else {
+                result.append(new TranslationTextComponent(mana.characterLangKey()).mergeStyle(mana.color()));
+            }
+        }
+
+        if (manasEmpty || nColorless > 0) {
+            result.append(new StringTextComponent(Integer.toString(nColorless)).mergeStyle(COLORLESS.color()));
+        }
+
+        return result;
     }
 }
