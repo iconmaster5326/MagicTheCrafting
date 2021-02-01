@@ -1,0 +1,23 @@
+{
+    "type": "minethecrafting:artificing",
+    "mana": {
+        "red": 10,
+        "blue": 10,
+        "green": 10,
+        "white": 10,
+        "black": 10
+    },
+    "inputs": [
+        {
+            "item": "minecraft:wither_rose"
+        },
+        {
+            "tag": "forge:dyes/black",
+            "count": 8
+        }
+    ],
+    "output": {
+        "item": "minethecrafting:black_lotus",
+        "count": 1
+    }
+}

@@ -10,7 +10,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -99,6 +98,10 @@ public enum Mana {
         return "manachar." + MineTheCrafting.MOD_ID + "." + resourcePrefix;
     }
 
+    public String shortName() {
+        return resourcePrefix;
+    }
+
     public String character() {
         return I18n.format(characterLangKey());
     }
@@ -127,5 +130,14 @@ public enum Mana {
         }
 
         return result;
+    }
+
+    public static Mana fromShortName(String shortName) {
+        for (Mana value : values()) {
+            if (value.shortName().equals(shortName)) {
+                return value;
+            }
+        }
+        return null;
     }
 }

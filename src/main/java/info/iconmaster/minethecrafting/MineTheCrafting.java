@@ -10,6 +10,7 @@ import info.iconmaster.minethecrafting.containers.MTCContainers;
 import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
 import info.iconmaster.minethecrafting.models.CardLoader;
+import info.iconmaster.minethecrafting.registry.ArtificingRecipe;
 import info.iconmaster.minethecrafting.registry.ManaTapRegistry;
 import info.iconmaster.minethecrafting.screens.ScreenArtificersTable;
 import info.iconmaster.minethecrafting.screens.ScreenManaTap;
@@ -19,12 +20,15 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -74,6 +78,12 @@ public class MineTheCrafting {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void registerRecipeSerializers(Register<IRecipeSerializer<?>> event) {
+        Registry.register(Registry.RECIPE_TYPE, ArtificingRecipe.ID, ArtificingRecipe.TYPE);
+        event.getRegistry().register(ArtificingRecipe.SERIALIZER);
     }
 
     public static final ItemGroup ITEM_GROUP = (new ItemGroup(MOD_ID) {

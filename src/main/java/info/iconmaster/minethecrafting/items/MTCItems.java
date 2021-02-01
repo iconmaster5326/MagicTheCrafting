@@ -29,6 +29,8 @@ public class MTCItems {
 
     public static final RegistryObject<Item> BLANK_CARD = ITEM_REGISTRY.register("blank_card",
             () -> new Item(new Item.Properties().group(MineTheCrafting.ITEM_GROUP)));
+    public static final RegistryObject<Item> BLACK_LOTUS = ITEM_REGISTRY.register("black_lotus",
+            () -> new Item(new Item.Properties().group(MineTheCrafting.ITEM_GROUP)));
 
     public static final RegistryObject<CardLightningBolt> CARD_LIGHTNING_BOLT = ITEM_REGISTRY
             .register("card_lightning_bolt", () -> new CardLightningBolt());
