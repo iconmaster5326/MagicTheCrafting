@@ -1,11 +1,8 @@
 package info.iconmaster.minethecrafting.blocks;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import info.iconmaster.minethecrafting.Mana;
-import info.iconmaster.minethecrafting.tes.TileEntityManaTap;
+import info.iconmaster.minethecrafting.tes.TileEntitySpellcraftersDesk;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -23,11 +20,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class BlockManaTap extends Block {
+public class BlockSpellcraftersDesk extends Block {
 
-  public BlockManaTap() {
-    super(Block.Properties.create(Material.ANVIL).hardnessAndResistance(5).harvestTool(ToolType.PICKAXE)
-        .setRequiresTool());
+  public BlockSpellcraftersDesk() {
+    super(Block.Properties.create(Material.ANVIL).hardnessAndResistance(3).harvestTool(ToolType.AXE).setRequiresTool());
   }
 
   @Override
@@ -37,21 +33,17 @@ public class BlockManaTap extends Block {
 
   @Override
   public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-    return new TileEntityManaTap();
+    return new TileEntitySpellcraftersDesk();
   }
 
   @Override
   public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
       Hand handIn, BlockRayTraceResult hit) {
     if (!worldIn.isRemote) {
-      TileEntityManaTap te = (TileEntityManaTap) this.getContainer(state, worldIn, pos);
+      TileEntitySpellcraftersDesk te = (TileEntitySpellcraftersDesk) this.getContainer(state, worldIn, pos);
       if (te != null) {
         NetworkHooks.openGui((ServerPlayerEntity) player, te, packet -> {
-          List<Mana> manaGeneratable = te.manaGeneratable();
-          packet.writeByte(manaGeneratable.size());
-          for (Mana mana : manaGeneratable) {
-            packet.writeByte(mana.ordinal());
-          }
+
         });
       }
     }
@@ -62,7 +54,7 @@ public class BlockManaTap extends Block {
   @Nullable
   public INamedContainerProvider getContainer(BlockState state, World world, BlockPos pos) {
     TileEntity tileentity = world.getTileEntity(pos);
-    return tileentity instanceof TileEntityManaTap ? (INamedContainerProvider) tileentity : null;
+    return tileentity instanceof TileEntitySpellcraftersDesk ? (INamedContainerProvider) tileentity : null;
   }
 
   @Override
@@ -70,8 +62,8 @@ public class BlockManaTap extends Block {
     if (state.getBlock() != newState.getBlock()) {
       TileEntity tileentity = worldIn.getTileEntity(pos);
 
-      if (tileentity instanceof TileEntityManaTap) {
-        InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityManaTap) tileentity);
+      if (tileentity instanceof TileEntitySpellcraftersDesk) {
+        InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntitySpellcraftersDesk) tileentity);
       }
 
       super.onReplaced(state, worldIn, pos, newState, isMoving);

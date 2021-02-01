@@ -14,6 +14,9 @@ public class MTCTileEntities {
 
     public static final RegistryObject<TileEntityType<TileEntityManaTap>> MANA_TAP = TE_REGISTRY.register("manatap",
             () -> TileEntityType.Builder.create(TileEntityManaTap::new, MTCBlocks.MANA_TAP.get()).build(null));
+    public static final RegistryObject<TileEntityType<TileEntitySpellcraftersDesk>> SPELLCRAFTERS_DESK = TE_REGISTRY
+            .register("spellcrafters_desk", () -> TileEntityType.Builder
+                    .create(TileEntitySpellcraftersDesk::new, MTCBlocks.SPELLCRAFTERS_DESK.get()).build(null));
 
     private MTCTileEntities() {
     }

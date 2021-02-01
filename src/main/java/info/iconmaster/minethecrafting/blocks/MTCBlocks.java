@@ -22,12 +22,15 @@ public class MTCBlocks {
 
     private static <T extends Block> RegistryObject<T> createRegistryObject(String name, Supplier<T> t) {
         RegistryObject<T> block = BLOCK_REGISTRY.register(name, t);
-        ITEM_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties().group(MineTheCrafting.ITEM_GROUP)));
+        ITEM_REGISTRY.register(name,
+                () -> new BlockItem(block.get(), new Item.Properties().group(MineTheCrafting.ITEM_GROUP)));
         return block;
     }
 
     public static final RegistryObject<BlockManaTap> MANA_TAP = createRegistryObject("manatap",
             () -> new BlockManaTap());
+    public static final RegistryObject<BlockSpellcraftersDesk> SPELLCRAFTERS_DESK = createRegistryObject(
+            "spellcrafters_desk", () -> new BlockSpellcraftersDesk());
 
     public static void register() {
         BLOCK_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

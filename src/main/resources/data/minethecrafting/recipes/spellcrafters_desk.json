@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "abc",
+        "ddd",
+        "e e"
+    ],
+    "key": {
+        "a": {
+            "tag": "minethecrafting:mana"
+        },
+        "b": {
+            "item": "minecraft:writable_book"
+        },
+        "c": {
+            "item": "minethecrafting:blank_card"
+        },
+        "d": {
+            "tag": "minecraft:wooden_slabs"
+        },
+        "e": {
+            "tag": "minecraft:wooden_fences"
+        }
+    },
+    "result": {
+        "item": "minethecrafting:spellcrafters_desk",
+        "count": 1
+    }
+}

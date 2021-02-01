@@ -11,6 +11,7 @@ import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
 import info.iconmaster.minethecrafting.models.CardLoader;
 import info.iconmaster.minethecrafting.screens.ScreenManaTap;
+import info.iconmaster.minethecrafting.screens.ScreenSpellcraftersDesk;
 import info.iconmaster.minethecrafting.tes.MTCTileEntities;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.PlayerContainer;
@@ -46,6 +47,7 @@ public class MineTheCrafting {
     @SubscribeEvent
     public static void setupClient(final FMLClientSetupEvent event) {
         ScreenManager.registerFactory(MTCContainers.MANA_TAP.get(), ScreenManaTap::new);
+        ScreenManager.registerFactory(MTCContainers.SPELLCRAFTERS_DESK.get(), ScreenSpellcraftersDesk::new);
     }
 
     @OnlyIn(Dist.CLIENT)

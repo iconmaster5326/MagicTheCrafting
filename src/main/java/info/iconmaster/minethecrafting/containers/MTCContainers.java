@@ -17,6 +17,8 @@ public class MTCContainers {
 
     public static final RegistryObject<ContainerType<ContainerManaTap>> MANA_TAP = CONTAINER_REGISTRY
             .register("manatap", () -> IForgeContainerType.create(ContainerManaTap::client));
+    public static final RegistryObject<ContainerType<ContainerSpellcraftersDesk>> SPELLCRAFTERS_DESK = CONTAINER_REGISTRY
+            .register("spellcrafters_desk", () -> IForgeContainerType.create(ContainerSpellcraftersDesk::client));
 
     public static void register() {
         CONTAINER_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

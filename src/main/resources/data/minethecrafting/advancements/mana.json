@@ -1,0 +1,19 @@
+{
+    "criteria": {
+        "item": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "tag": "minethecrafting:mana"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "recipes": [
+            "minethecrafting:spellcrafters_desk"
+        ]
+    }
+}
