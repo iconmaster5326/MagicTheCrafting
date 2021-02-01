@@ -1,4 +1,4 @@
-package info.iconmaster.minethecrafting.registry;
+package info.iconmaster.minethecrafting.recipes;
 
 import java.util.Arrays;
 

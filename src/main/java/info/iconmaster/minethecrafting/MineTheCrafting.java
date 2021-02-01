@@ -10,8 +10,8 @@ import info.iconmaster.minethecrafting.containers.MTCContainers;
 import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
 import info.iconmaster.minethecrafting.models.CardLoader;
-import info.iconmaster.minethecrafting.registry.ArtificingRecipe;
-import info.iconmaster.minethecrafting.registry.ManaTapRegistry;
+import info.iconmaster.minethecrafting.recipes.RecipeArtificing;
+import info.iconmaster.minethecrafting.recipes.RecipeManaTap;
 import info.iconmaster.minethecrafting.screens.ScreenArtificersTable;
 import info.iconmaster.minethecrafting.screens.ScreenManaTap;
 import info.iconmaster.minethecrafting.screens.ScreenSpellcraftersDesk;
@@ -45,8 +45,6 @@ public class MineTheCrafting {
         MTCTileEntities.register();
         MTCContainers.register();
         MTCItems.register();
-
-        ManaTapRegistry.registerDefualtBiomes();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -82,8 +80,11 @@ public class MineTheCrafting {
 
     @SubscribeEvent
     public static void registerRecipeSerializers(Register<IRecipeSerializer<?>> event) {
-        Registry.register(Registry.RECIPE_TYPE, ArtificingRecipe.ID, ArtificingRecipe.TYPE);
-        event.getRegistry().register(ArtificingRecipe.SERIALIZER);
+        Registry.register(Registry.RECIPE_TYPE, RecipeArtificing.ID, RecipeArtificing.TYPE);
+        event.getRegistry().register(RecipeArtificing.SERIALIZER);
+
+        Registry.register(Registry.RECIPE_TYPE, RecipeManaTap.ID, RecipeManaTap.TYPE);
+        event.getRegistry().register(RecipeManaTap.SERIALIZER);
     }
 
     public static final ItemGroup ITEM_GROUP = (new ItemGroup(MOD_ID) {

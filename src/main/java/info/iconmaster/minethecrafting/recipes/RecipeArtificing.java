@@ -1,4 +1,4 @@
-package info.iconmaster.minethecrafting.registry;
+package info.iconmaster.minethecrafting.recipes;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,8 +11,8 @@ import com.google.gson.JsonObject;
 
 import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.MineTheCrafting;
-import info.iconmaster.minethecrafting.containers.InventoryArtificing;
 import info.iconmaster.minethecrafting.tes.TileEntityArtificersTable;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -24,7 +24,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
+public class RecipeArtificing implements IRecipe<RecipeArtificing.Inventory> {
     public static final ResourceLocation ID = new ResourceLocation(MineTheCrafting.MOD_ID, "artificing");
 
     public final ResourceLocation id;
@@ -32,7 +32,7 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
     public Set<SizedIngredient> inputs;
     public ItemStack output;
 
-    public ArtificingRecipe(ResourceLocation id, Map<Mana, Integer> mana, Set<SizedIngredient> inputs,
+    public RecipeArtificing(ResourceLocation id, Map<Mana, Integer> mana, Set<SizedIngredient> inputs,
             ItemStack output) {
         this.id = id;
         this.mana = mana;
@@ -46,7 +46,7 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
     }
 
     @Override
-    public ItemStack getCraftingResult(InventoryArtificing inventory) {
+    public ItemStack getCraftingResult(Inventory inventory) {
         for (Entry<Mana, Integer> entry : mana.entrySet()) {
             for (int i = 0; i < TileEntityArtificersTable.N_MANA_SLOTS; i++) {
                 int slot = TileEntityArtificersTable.FIRST_MANA_SLOT + i;
@@ -105,7 +105,7 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
     }
 
     @Override
-    public boolean matches(InventoryArtificing inventory, World world) {
+    public boolean matches(Inventory inventory, World world) {
         for (Entry<Mana, Integer> entry : mana.entrySet()) {
             boolean found = false;
             for (int i = 0; i < TileEntityArtificersTable.N_MANA_SLOTS; i++) {
@@ -154,7 +154,7 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
         return true;
     }
 
-    public static class Type implements IRecipeType<ArtificingRecipe> {
+    public static class Type implements IRecipeType<RecipeArtificing> {
         @Override
         public String toString() {
             return ID.toString();
@@ -162,13 +162,13 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
     }
 
     public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>>
-            implements IRecipeSerializer<ArtificingRecipe> {
+            implements IRecipeSerializer<RecipeArtificing> {
         public Serializer() {
             this.setRegistryName(ID);
         }
 
         @Override
-        public ArtificingRecipe read(ResourceLocation id, JsonObject json) {
+        public RecipeArtificing read(ResourceLocation id, JsonObject json) {
             Map<Mana, Integer> manas = new HashMap<>();
             for (Entry<String, JsonElement> entry : json.get("mana").getAsJsonObject().entrySet()) {
                 manas.put(Mana.fromShortName(entry.getKey()), entry.getValue().getAsInt());
@@ -179,12 +179,12 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
                 inputs.add(SizedIngredient.deserialize(input));
             }
 
-            return new ArtificingRecipe(id, manas, inputs,
+            return new RecipeArtificing(id, manas, inputs,
                     ShapedRecipe.deserializeItem(json.get("output").getAsJsonObject()));
         }
 
         @Override
-        public ArtificingRecipe read(ResourceLocation id, PacketBuffer packet) {
+        public RecipeArtificing read(ResourceLocation id, PacketBuffer packet) {
             Map<Mana, Integer> manas = new HashMap<>();
             int nMana = packet.readByte();
             for (int i = 0; i < nMana; i++) {
@@ -199,11 +199,11 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
                 inputs.add(SizedIngredient.read(packet));
             }
 
-            return new ArtificingRecipe(id, manas, inputs, packet.readItemStack());
+            return new RecipeArtificing(id, manas, inputs, packet.readItemStack());
         }
 
         @Override
-        public void write(PacketBuffer packet, ArtificingRecipe recipe) {
+        public void write(PacketBuffer packet, RecipeArtificing recipe) {
             packet.writeByte(recipe.mana.size());
             for (Entry<Mana, Integer> entry : recipe.mana.entrySet()) {
                 packet.writeByte(entry.getKey().ordinal());
@@ -214,6 +214,12 @@ public class ArtificingRecipe implements IRecipe<InventoryArtificing> {
                 input.writeSizedIngredient(packet);
             }
             packet.writeItemStack(recipe.output);
+        }
+    }
+
+    public static class Inventory extends ProxyInventory {
+        public Inventory(IInventory inventory) {
+            super(inventory);
         }
     }
 

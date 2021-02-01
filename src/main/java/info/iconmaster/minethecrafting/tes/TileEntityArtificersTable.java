@@ -3,8 +3,7 @@ package info.iconmaster.minethecrafting.tes;
 import javax.annotation.Nullable;
 
 import info.iconmaster.minethecrafting.containers.ContainerArtificersTable;
-import info.iconmaster.minethecrafting.containers.InventoryArtificing;
-import info.iconmaster.minethecrafting.registry.ArtificingRecipe;
+import info.iconmaster.minethecrafting.recipes.RecipeArtificing;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ItemStackHelper;
@@ -43,15 +42,15 @@ public class TileEntityArtificersTable extends LockableLootTileEntity implements
             OUTPUT_SLOT = 9, N_SLOTS = 10, MAX_PROGRESS = 100;
 
     private NonNullList<ItemStack> slots = NonNullList.<ItemStack>withSize(N_SLOTS, ItemStack.EMPTY);
-    private InventoryArtificing craftingInventory = new InventoryArtificing(this);
+    private RecipeArtificing.Inventory craftingInventory = new RecipeArtificing.Inventory(this);
     public Data data = new Data();
 
     public TileEntityArtificersTable() {
         super(MTCTileEntities.ARTIFICERS_TABLE.get());
     }
 
-    public ArtificingRecipe getCurrentRecipe() {
-        for (ArtificingRecipe recipe : world.getRecipeManager().getRecipes(ArtificingRecipe.TYPE, craftingInventory,
+    public RecipeArtificing getCurrentRecipe() {
+        for (RecipeArtificing recipe : world.getRecipeManager().getRecipes(RecipeArtificing.TYPE, craftingInventory,
                 world)) {
             if (recipe.matches(craftingInventory, world)) {
                 return recipe;
@@ -62,7 +61,7 @@ public class TileEntityArtificersTable extends LockableLootTileEntity implements
 
     @Override
     public void tick() {
-        ArtificingRecipe recipe = getCurrentRecipe();
+        RecipeArtificing recipe = getCurrentRecipe();
         if (recipe == null) {
             data.progress = 0;
         } else {

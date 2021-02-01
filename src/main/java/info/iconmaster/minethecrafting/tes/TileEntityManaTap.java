@@ -2,12 +2,13 @@ package info.iconmaster.minethecrafting.tes;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
 import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.containers.ContainerManaTap;
-import info.iconmaster.minethecrafting.registry.ManaTapRegistry;
+import info.iconmaster.minethecrafting.recipes.RecipeManaTap;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ItemStackHelper;
@@ -157,6 +158,6 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
     }
 
     public List<Mana> manaGeneratable() {
-        return ManaTapRegistry.getMana(world, pos);
+        return RecipeManaTap.getManaForBiome(world, pos).stream().collect(Collectors.toList());
     }
 }

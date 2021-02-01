@@ -1,13 +1,13 @@
-package info.iconmaster.minethecrafting.containers;
+package info.iconmaster.minethecrafting.recipes;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-public class InventoryArtificing implements IInventory {
+public class ProxyInventory implements IInventory {
     private IInventory inventory;
 
-    public InventoryArtificing(IInventory inventory) {
+    public ProxyInventory(IInventory inventory) {
         this.inventory = inventory;
     }
 
