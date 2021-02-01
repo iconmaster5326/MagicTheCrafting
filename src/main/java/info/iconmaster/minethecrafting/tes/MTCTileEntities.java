@@ -17,6 +17,9 @@ public class MTCTileEntities {
     public static final RegistryObject<TileEntityType<TileEntitySpellcraftersDesk>> SPELLCRAFTERS_DESK = TE_REGISTRY
             .register("spellcrafters_desk", () -> TileEntityType.Builder
                     .create(TileEntitySpellcraftersDesk::new, MTCBlocks.SPELLCRAFTERS_DESK.get()).build(null));
+    public static final RegistryObject<TileEntityType<TileEntityArtificersTable>> ARTIFICERS_TABLE = TE_REGISTRY
+            .register("artificers_table", () -> TileEntityType.Builder
+                    .create(TileEntityArtificersTable::new, MTCBlocks.ARTIFICERS_TABLE.get()).build(null));
 
     private MTCTileEntities() {
     }

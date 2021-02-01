@@ -3,6 +3,7 @@ package info.iconmaster.minethecrafting.tes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
@@ -16,6 +17,7 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.INBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -138,7 +140,11 @@ public class TileEntitySpellcraftersDesk extends LockableLootTileEntity implemen
             ItemStackHelper.loadAllItems(compound, this.slots);
         }
 
-        compound.putInt("progress", data.progress);
+        data.progress = compound.getInt("progress");
+        manaConsumed.clear();
+        for (int i : compound.getIntArray("manaConsumed")) {
+            manaConsumed.add(Mana.values()[i]);
+        }
     }
 
     @Override
@@ -149,7 +155,8 @@ public class TileEntitySpellcraftersDesk extends LockableLootTileEntity implemen
             ItemStackHelper.saveAllItems(compound, this.slots);
         }
 
-        data.progress = compound.getInt("progress");
+        compound.putInt("progress", data.progress);
+        compound.putIntArray("manaConsumed", manaConsumed.stream().map(m -> m.ordinal()).collect(Collectors.toList()));
 
         return compound;
     }

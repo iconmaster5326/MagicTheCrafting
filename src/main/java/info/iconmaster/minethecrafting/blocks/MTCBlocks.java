@@ -31,6 +31,8 @@ public class MTCBlocks {
             () -> new BlockManaTap());
     public static final RegistryObject<BlockSpellcraftersDesk> SPELLCRAFTERS_DESK = createRegistryObject(
             "spellcrafters_desk", () -> new BlockSpellcraftersDesk());
+    public static final RegistryObject<BlockArtificersTable> ARTIFICERS_TABLE = createRegistryObject("artificers_table",
+            () -> new BlockArtificersTable());
 
     public static void register() {
         BLOCK_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

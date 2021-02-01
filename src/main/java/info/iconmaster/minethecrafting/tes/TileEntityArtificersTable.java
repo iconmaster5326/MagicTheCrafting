@@ -1,18 +1,12 @@
 package info.iconmaster.minethecrafting.tes;
 
-import java.util.List;
-import java.util.Random;
-
 import javax.annotation.Nullable;
 
-import info.iconmaster.minethecrafting.Mana;
-import info.iconmaster.minethecrafting.containers.ContainerManaTap;
-import info.iconmaster.minethecrafting.registry.ManaTapRegistry;
+import info.iconmaster.minethecrafting.containers.ContainerArtificersTable;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
@@ -23,7 +17,7 @@ import net.minecraft.util.IIntArray;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityManaTap extends LockableLootTileEntity implements ITickableTileEntity {
+public class TileEntityArtificersTable extends LockableLootTileEntity implements ITickableTileEntity {
     public static class Data implements IIntArray {
         public int progress;
 
@@ -43,38 +37,19 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
         }
     }
 
-    public static final int N_SLOTS = 3, MAX_PROGRESS = 60;
+    public static final int FIRST_MANA_SLOT = 0, N_MANA_SLOTS = 5, FIRST_INPUT_SLOT = 5, N_INPUT_SLOTS = 4,
+            OUTPUT_SLOT = 9, N_SLOTS = 10, MAX_PROGRESS = 100;
 
-    private NonNullList<ItemStack> outputs = NonNullList.<ItemStack>withSize(N_SLOTS, ItemStack.EMPTY);
-    private Random rng = new Random();
+    private NonNullList<ItemStack> slots = NonNullList.<ItemStack>withSize(N_SLOTS, ItemStack.EMPTY);
     public Data data = new Data();
 
-    public TileEntityManaTap() {
-        super(MTCTileEntities.MANA_TAP.get());
+    public TileEntityArtificersTable() {
+        super(MTCTileEntities.ARTIFICERS_TABLE.get());
     }
 
     @Override
     public void tick() {
-        if (data.progress < MAX_PROGRESS) {
-            data.progress++;
-        } else {
-            List<Mana> mana = manaGeneratable();
-            if (!mana.isEmpty()) {
-                Item toOutput = mana.get(rng.nextInt(mana.size())).item();
-                for (int slot = 0; slot < N_SLOTS; slot++) {
-                    ItemStack stack = outputs.get(slot);
-                    if (stack == ItemStack.EMPTY || stack.getCount() <= 0) {
-                        data.progress -= MAX_PROGRESS;
-                        outputs.set(slot, new ItemStack(toOutput));
-                        break;
-                    } else if (stack.getItem() == toOutput && stack.getCount() < stack.getMaxStackSize()) {
-                        data.progress -= MAX_PROGRESS;
-                        stack.setCount(stack.getCount() + 1);
-                        break;
-                    }
-                }
-            }
-        }
+
     }
 
     @Override
@@ -84,19 +59,19 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
 
     @Override
     protected NonNullList<ItemStack> getItems() {
-        return outputs;
+        return slots;
     }
 
     @Override
     protected void setItems(NonNullList<ItemStack> items) {
-        outputs.set(0, items.get(0));
-        outputs.set(1, items.get(1));
-        outputs.set(2, items.get(2));
+        for (int i = 0; i < N_SLOTS; i++) {
+            slots.set(i, items.get(i));
+        }
     }
 
     @Override
     protected Container createMenu(int windowID, PlayerInventory inventory) {
-        return ContainerManaTap.server(windowID, inventory, this);
+        return ContainerArtificersTable.server(windowID, inventory, this);
     }
 
     @Override
@@ -108,10 +83,10 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
     public void read(BlockState state, CompoundNBT compound) {
         super.read(state, compound);
 
-        this.outputs = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        this.slots = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 
         if (!this.checkLootAndRead(compound)) {
-            ItemStackHelper.loadAllItems(compound, this.outputs);
+            ItemStackHelper.loadAllItems(compound, this.slots);
         }
 
         data.progress = compound.getInt("progress");
@@ -122,7 +97,7 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
         super.write(compound);
 
         if (!this.checkLootAndWrite(compound)) {
-            ItemStackHelper.saveAllItems(compound, this.outputs);
+            ItemStackHelper.saveAllItems(compound, this.slots);
         }
 
         compound.putInt("progress", data.progress);
@@ -154,9 +129,5 @@ public class TileEntityManaTap extends LockableLootTileEntity implements ITickab
     @Override
     public void handleUpdateTag(BlockState state, CompoundNBT tag) {
         read(state, tag);
-    }
-
-    public List<Mana> manaGeneratable() {
-        return ManaTapRegistry.getMana(world, pos);
     }
 }

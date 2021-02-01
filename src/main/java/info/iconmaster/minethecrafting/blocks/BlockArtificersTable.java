@@ -2,7 +2,7 @@ package info.iconmaster.minethecrafting.blocks;
 
 import javax.annotation.Nullable;
 
-import info.iconmaster.minethecrafting.tes.TileEntitySpellcraftersDesk;
+import info.iconmaster.minethecrafting.tes.TileEntityArtificersTable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -20,10 +20,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class BlockSpellcraftersDesk extends Block {
+public class BlockArtificersTable extends Block {
 
-  public BlockSpellcraftersDesk() {
-    super(Block.Properties.create(Material.WOOD).hardnessAndResistance(3).harvestTool(ToolType.AXE).setRequiresTool());
+  public BlockArtificersTable() {
+    super(Block.Properties.create(Material.ROCK).hardnessAndResistance(5).harvestTool(ToolType.PICKAXE)
+        .setRequiresTool());
   }
 
   @Override
@@ -33,14 +34,14 @@ public class BlockSpellcraftersDesk extends Block {
 
   @Override
   public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-    return new TileEntitySpellcraftersDesk();
+    return new TileEntityArtificersTable();
   }
 
   @Override
   public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
       Hand handIn, BlockRayTraceResult hit) {
     if (!worldIn.isRemote) {
-      TileEntitySpellcraftersDesk te = (TileEntitySpellcraftersDesk) this.getContainer(state, worldIn, pos);
+      TileEntityArtificersTable te = (TileEntityArtificersTable) this.getContainer(state, worldIn, pos);
       if (te != null) {
         NetworkHooks.openGui((ServerPlayerEntity) player, te, packet -> {
 
@@ -54,7 +55,7 @@ public class BlockSpellcraftersDesk extends Block {
   @Nullable
   public INamedContainerProvider getContainer(BlockState state, World world, BlockPos pos) {
     TileEntity tileentity = world.getTileEntity(pos);
-    return tileentity instanceof TileEntitySpellcraftersDesk ? (INamedContainerProvider) tileentity : null;
+    return tileentity instanceof TileEntityArtificersTable ? (INamedContainerProvider) tileentity : null;
   }
 
   @Override
@@ -62,8 +63,8 @@ public class BlockSpellcraftersDesk extends Block {
     if (state.getBlock() != newState.getBlock()) {
       TileEntity tileentity = worldIn.getTileEntity(pos);
 
-      if (tileentity instanceof TileEntitySpellcraftersDesk) {
-        InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntitySpellcraftersDesk) tileentity);
+      if (tileentity instanceof TileEntityArtificersTable) {
+        InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityArtificersTable) tileentity);
       }
 
       super.onReplaced(state, worldIn, pos, newState, isMoving);
