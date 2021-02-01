@@ -30,8 +30,8 @@ public class MTCItems {
     public static final RegistryObject<Item> BLANK_CARD = ITEM_REGISTRY.register("blank_card",
             () -> new Item(new Item.Properties().group(MineTheCrafting.ITEM_GROUP)));
 
-    public static final RegistryObject<Item> CARD_LIGHTNING_BOLT = ITEM_REGISTRY.register("card_lightning_bolt",
-            () -> new CardLightningBolt());
+    public static final RegistryObject<CardLightningBolt> CARD_LIGHTNING_BOLT = ITEM_REGISTRY
+            .register("card_lightning_bolt", () -> new CardLightningBolt());
 
     public static void register() {
         ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

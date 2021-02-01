@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class CardLightningBolt extends ItemCard {
     public CardLightningBolt() {
-        super(Mana.RED, Arrays.asList(Mana.RED));
+        super(0, Mana.RED, Arrays.asList(Mana.RED));
     }
 
     @Override

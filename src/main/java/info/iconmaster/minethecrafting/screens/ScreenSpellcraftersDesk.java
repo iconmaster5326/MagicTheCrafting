@@ -39,12 +39,12 @@ public class ScreenSpellcraftersDesk extends ContainerScreen<ContainerSpellcraft
                                 ContainerSpellcraftersDesk.GUI_HEIGHT, ContainerSpellcraftersDesk.GUI_WIDTH,
                                 ContainerSpellcraftersDesk.GUI_HEIGHT);
 
-                // float percentProgress = (((float) container.teData.progress)
-                //                 / TileEntitySpellcraftersDesk.MAX_PROGRESS);
-                // int barHeight = (int) (PROGRESS_H * percentProgress);
-                // getMinecraft().getTextureManager().bindTexture(PROGRESS_BAR);
-                // blit(ms, originX + PROGRESS_X, originY + PROGRESS_Y + (PROGRESS_H - barHeight), 0,
-                //                 PROGRESS_H - barHeight, PROGRESS_W, barHeight, PROGRESS_W, PROGRESS_H);
+                float percentProgress = (((float) container.teData.progress)
+                                / TileEntitySpellcraftersDesk.MAX_PROGRESS);
+                int barWidth = (int) (PROGRESS_W * percentProgress);
+                getMinecraft().getTextureManager().bindTexture(PROGRESS_BAR);
+                blit(ms, originX + PROGRESS_X, originY + PROGRESS_Y, 0, 0, barWidth, PROGRESS_H, PROGRESS_W,
+                                PROGRESS_H);
         }
 
         @Override

@@ -6,8 +6,8 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import info.iconmaster.minethecrafting.Mana;
-import info.iconmaster.minethecrafting.ManaTapRegistry;
 import info.iconmaster.minethecrafting.containers.ContainerManaTap;
+import info.iconmaster.minethecrafting.registry.ManaTapRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ItemStackHelper;

@@ -5,11 +5,12 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import info.iconmaster.minethecrafting.containers.MTCContainers;
 import info.iconmaster.minethecrafting.blocks.MTCBlocks;
+import info.iconmaster.minethecrafting.containers.MTCContainers;
 import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
 import info.iconmaster.minethecrafting.models.CardLoader;
+import info.iconmaster.minethecrafting.registry.ManaTapRegistry;
 import info.iconmaster.minethecrafting.screens.ScreenManaTap;
 import info.iconmaster.minethecrafting.screens.ScreenSpellcraftersDesk;
 import info.iconmaster.minethecrafting.tes.MTCTileEntities;

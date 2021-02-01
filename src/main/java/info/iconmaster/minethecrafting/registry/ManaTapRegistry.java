@@ -1,4 +1,4 @@
-package info.iconmaster.minethecrafting;
+package info.iconmaster.minethecrafting.registry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import info.iconmaster.minethecrafting.Mana;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
