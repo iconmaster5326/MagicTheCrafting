@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "aaa",
+        "bbb",
+        "cdc"
+    ],
+    "key": {
+        "a": {
+            "item": "minecraft:smooth_stone"
+        },
+        "b": {
+            "tag": "minethecrafting:mana"
+        },
+        "c": {
+            "tag": "forge:gems/lapis"
+        },
+        "d": {
+            "item": "minecraft:anvil"
+        }
+    },
+    "result": {
+        "item": "minethecrafting:artificers_table",
+        "count": 1
+    }
+}

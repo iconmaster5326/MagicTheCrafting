@@ -13,7 +13,8 @@
     },
     "rewards": {
         "recipes": [
-            "minethecrafting:spellcrafters_desk"
+            "minethecrafting:spellcrafters_desk",
+            "minethecrafting:artificers_table"
         ]
     }
 }
