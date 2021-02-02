@@ -1,16 +1,13 @@
 package info.iconmaster.minethecrafting.entities;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeMod;
@@ -58,17 +55,9 @@ public class EntitySinewSliver extends EntitySummoned implements IAnimatable {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new EntitySummoned.GoalMoveToSummoner(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, getAttributeValue(Attributes.ATTACK_SPEED), false));
-        this.goalSelector.addGoal(3,
-                new NearestAttackableTargetGoal<LivingEntity>(this, LivingEntity.class, true, true));
+        this.goalSelector.addGoal(3, new EntitySummoned.GoalMoveToAttackers(this));
         this.goalSelector.addGoal(4, new RandomWalkingGoal(this, getAttributeValue(Attributes.MOVEMENT_SPEED)));
         this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
-    }
-
-    @Override
-    public boolean canAttack(LivingEntity entity) {
-        PlayerEntity summoner = getSummoner();
-        return entity != summoner && (entity instanceof MonsterEntity
-                || (summoner != null && (summoner.getLastAttackedEntity() == entity)));
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {

@@ -2,13 +2,17 @@ package info.iconmaster.minethecrafting.entities;
 
 import java.util.UUID;
 
-import info.iconmaster.minethecrafting.MineTheCrafting;
 import net.minecraft.entity.CreatureEntity;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntitySummoned extends CreatureEntity {
@@ -51,8 +55,42 @@ public class EntitySummoned extends CreatureEntity {
         summoner = player;
     }
 
+    @Override
+    public boolean canAttack(LivingEntity entity) {
+        if (entity == this || entity == null) {
+            return false;
+        }
+
+        if (entity.getClassification(false) == EntityClassification.MONSTER) {
+            return true;
+        }
+
+        PlayerEntity summoner = getSummoner();
+        if (summoner != null) {
+            if (entity == summoner) {
+                return false;
+            }
+
+            if (summoner.getLastAttackedEntity() == entity) {
+                return true;
+            }
+
+            DamageSource dmg = summoner.getLastDamageSource();
+            if (dmg != null && dmg.getTrueSource() == entity) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean preventDespawn() {
+        return summoner != null;
+    }
+
     public static class GoalMoveToSummoner extends Goal {
-        private static final float MIN_DIST = 5.0f, MAX_DIST = 10.0f;
+        public static final float MIN_DIST = 5.0f, MAX_DIST = 10.0f;
         private EntitySummoned entity;
 
         public GoalMoveToSummoner(EntitySummoned entity) {
@@ -93,5 +131,22 @@ public class EntitySummoned extends CreatureEntity {
         }
     }
 
-    
+    public static class GoalMoveToAttackers extends NearestAttackableTargetGoal<LivingEntity> {
+        public GoalMoveToAttackers(EntitySummoned entity) {
+            super(entity, LivingEntity.class, true, true);
+            this.targetEntitySelector = new EntityPredicate().allowFriendlyFire().setLineOfSiteRequired()
+                    .setUseInvisibilityCheck().setCustomPredicate(target -> {
+                        if (!entity.canAttack(target)) {
+                            return false;
+                        }
+
+                        PlayerEntity summoner = entity.getSummoner();
+                        if (summoner != null && target.getDistance(summoner) >= GoalMoveToSummoner.MAX_DIST) {
+                            return false;
+                        }
+
+                        return true;
+                    });
+        }
+    }
 }
