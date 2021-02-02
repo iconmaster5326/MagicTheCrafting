@@ -22,8 +22,10 @@ public class MTCEntities {
 
     public static final RegistryObject<EntityType<EntitySinewSliver>> SINEW_SLIVER = ENTITY_REGISTRY.register(
             EntitySinewSliver.ID,
-            () -> EntityType.Builder.<EntitySinewSliver>create((type, world) -> new EntitySinewSliver(world),
-                    EntityClassification.MONSTER).build(EntitySinewSliver.ID));
+            () -> EntityType.Builder
+                    .<EntitySinewSliver>create((type, world) -> new EntitySinewSliver(world),
+                            EntityClassification.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true).build(EntitySinewSliver.ID));
 
     public static void register() {
         ENTITY_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());

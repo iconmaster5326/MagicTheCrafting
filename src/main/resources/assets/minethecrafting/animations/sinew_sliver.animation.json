@@ -111,6 +111,9 @@
 					}
 				}
 			}
+		},
+		"animation.sinew_sliver.move": {
+			"loop": true
 		}
 	}
 }

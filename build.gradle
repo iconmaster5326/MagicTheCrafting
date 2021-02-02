@@ -99,7 +99,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-36.0.13"
 
-    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_version}:3.0.8")
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_version}:3.0.10")
     compileOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
 }
