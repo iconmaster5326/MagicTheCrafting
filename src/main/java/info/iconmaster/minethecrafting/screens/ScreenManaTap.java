@@ -18,10 +18,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ScreenManaTap extends ContainerScreen<ContainerManaTap> {
-        public static int WIDTH = 176, HEIGHT = 166, OUTPUTS_X = 60, OUTPUTS_Y = 11, PROGRESS_X = 71, PROGRESS_Y = 34,
+        public static final int WIDTH = 176, HEIGHT = 166, OUTPUTS_X = 60, OUTPUTS_Y = 11, PROGRESS_X = 71, PROGRESS_Y = 34,
                         PROGRESS_W = 29, PROGRESS_H = 21, ICON_SIZE = 16, STATUS_Y = 58, STATUS_H = 10;
 
-        private static ResourceLocation BACKGROUND = new ResourceLocation(
+        public static final ResourceLocation BACKGROUND = new ResourceLocation(
                         MineTheCrafting.MOD_ID + ":textures/screen/manatap_bg.png"),
                         PROGRESS_BAR = new ResourceLocation(
                                         MineTheCrafting.MOD_ID + ":textures/screen/manatap_progress_bar.png"),
@@ -39,7 +39,7 @@ public class ScreenManaTap extends ContainerScreen<ContainerManaTap> {
                 int originX = width / 2 - WIDTH / 2, originY = height / 2 - HEIGHT / 2;
 
                 getMinecraft().getTextureManager().bindTexture(BACKGROUND);
-                blit(ms, originX, originY, 0, 0, WIDTH, HEIGHT, WIDTH, HEIGHT);
+                blit(ms, originX, originY, 0, 0, WIDTH, HEIGHT, 256, 256);
 
                 float percentProgress = (((float) container.teData.progress) / TileEntityManaTap.MAX_PROGRESS);
                 int barHeight = (int) (PROGRESS_H * percentProgress);
