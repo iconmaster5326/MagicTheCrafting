@@ -6,27 +6,19 @@
 		},
 		"animation.sinew_sliver.idle": {
 			"loop": true,
-			"animation_length": 2.08,
+			"animation_length": 4.2,
 			"bones": {
-				"torso": {
-					"rotation": {
-						"vector": [17.5, 0, 0]
-					},
-					"position": {
-						"vector": [0, -1.3, 0]
-					}
-				},
 				"upper_tail": {
 					"rotation": {
 						"0.0": {
 							"vector": [-22.5, -25, 0],
 							"easing": "easeInOutQuad"
 						},
-						"1.04": {
+						"2.08": {
 							"vector": [-22.5, 25, 0],
 							"easing": "easeInOutQuad"
 						},
-						"2.08": {
+						"4.2": {
 							"vector": [-22.5, -25, 0],
 							"easing": "easeInOutQuad"
 						}
@@ -38,11 +30,11 @@
 							"vector": [10, -27.5, 0],
 							"easing": "easeInOutQuad"
 						},
-						"1.04": {
+						"2.08": {
 							"vector": [10, 35, 0],
 							"easing": "easeInOutQuad"
 						},
-						"2.08": {
+						"4.2": {
 							"vector": [10, -27.5, 0],
 							"easing": "easeInOutQuad"
 						}
@@ -58,11 +50,11 @@
 						"0.0": {
 							"vector": [25, 0, 0]
 						},
-						"1.04": {
+						"2.08": {
 							"vector": [15, 0, 0],
 							"easing": "easeInOutSine"
 						},
-						"2.08": {
+						"4.2": {
 							"vector": [25, 0, 0],
 							"easing": "easeInOutSine"
 						}
@@ -73,11 +65,11 @@
 						"0.0": {
 							"vector": [27.5, 0, 0]
 						},
-						"1.04": {
+						"2.08": {
 							"vector": [50, 0, 0],
 							"easing": "easeInOutSine"
 						},
-						"2.08": {
+						"4.2": {
 							"vector": [27.5, 0, 0],
 							"easing": "easeInOutSine"
 						}
@@ -88,11 +80,11 @@
 						"0.0": {
 							"vector": [-70, 0, 0]
 						},
-						"1.04": {
+						"2.08": {
 							"vector": [-87.5, 0, 0],
 							"easing": "easeInOutSine"
 						},
-						"2.08": {
+						"4.2": {
 							"vector": [-70, 0, 0],
 							"easing": "easeInOutSine"
 						}
@@ -103,14 +95,19 @@
 						"0.0": {
 							"vector": [67.5, 0, 0]
 						},
-						"1.04": {
+						"2.08": {
 							"vector": [85, 0, 0],
 							"easing": "easeInOutSine"
 						},
-						"2.08": {
+						"4.2": {
 							"vector": [67.5, 0, 0],
 							"easing": "easeInOutSine"
 						}
+					}
+				},
+				"torso": {
+					"rotation": {
+						"vector": [20, 0, 0]
 					}
 				}
 			}
