@@ -34,6 +34,8 @@ public class MTCItems {
 
     public static final RegistryObject<CardLightningBolt> CARD_LIGHTNING_BOLT = ITEM_REGISTRY
             .register("card_lightning_bolt", () -> new CardLightningBolt());
+    public static final RegistryObject<CardSinewSliver> CARD_SINEW_SLIVER = ITEM_REGISTRY.register("card_sinew_sliver",
+            () -> new CardSinewSliver());
 
     public static void register() {
         ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
