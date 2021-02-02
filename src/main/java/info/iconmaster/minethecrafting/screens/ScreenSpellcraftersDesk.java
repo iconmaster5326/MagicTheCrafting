@@ -15,9 +15,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ScreenSpellcraftersDesk extends ContainerScreen<ContainerSpellcraftersDesk> {
-        public static int PROGRESS_X = 38, PROGRESS_Y = 38, PROGRESS_W = 98, PROGRESS_H = 10;
+        public static final int PROGRESS_X = 38, PROGRESS_Y = 38, PROGRESS_W = 98, PROGRESS_H = 10;
 
-        private static ResourceLocation BACKGROUND = new ResourceLocation(
+        public static final ResourceLocation BACKGROUND = new ResourceLocation(
                         MineTheCrafting.MOD_ID + ":textures/screen/spellcrafters_desk_bg.png"),
                         PROGRESS_BAR = new ResourceLocation(MineTheCrafting.MOD_ID
                                         + ":textures/screen/spellcrafters_desk_progress_bar.png");
@@ -36,8 +36,7 @@ public class ScreenSpellcraftersDesk extends ContainerScreen<ContainerSpellcraft
 
                 getMinecraft().getTextureManager().bindTexture(BACKGROUND);
                 blit(ms, originX, originY, 0, 0, ContainerSpellcraftersDesk.GUI_WIDTH,
-                                ContainerSpellcraftersDesk.GUI_HEIGHT, ContainerSpellcraftersDesk.GUI_WIDTH,
-                                ContainerSpellcraftersDesk.GUI_HEIGHT);
+                                ContainerSpellcraftersDesk.GUI_HEIGHT, 256, 256);
 
                 float percentProgress = (((float) container.teData.progress)
                                 / TileEntitySpellcraftersDesk.MAX_PROGRESS);
