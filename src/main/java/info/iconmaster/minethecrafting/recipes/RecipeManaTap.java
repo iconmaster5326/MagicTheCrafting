@@ -37,12 +37,12 @@ public class RecipeManaTap implements IRecipe<RecipeManaTap.Inventory> {
 
     @Override
     public boolean canFit(int width, int height) {
-        throw new RuntimeException("not implemented in RecipeManaTap");
+        return false;
     }
 
     @Override
     public ItemStack getCraftingResult(Inventory inventory) {
-        throw new RuntimeException("not implemented in RecipeManaTap");
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class RecipeManaTap implements IRecipe<RecipeManaTap.Inventory> {
 
     @Override
     public ItemStack getRecipeOutput() {
-        throw new RuntimeException("not implemented in RecipeManaTap");
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class RecipeManaTap implements IRecipe<RecipeManaTap.Inventory> {
 
     @Override
     public boolean matches(Inventory inventory, World world) {
-        throw new RuntimeException("not implemented in RecipeManaTap");
+        return false;
     }
 
     public static class Type implements IRecipeType<RecipeManaTap> {
