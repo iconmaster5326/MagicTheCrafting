@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 import info.iconmaster.minethecrafting.blocks.MTCBlocks;
 import info.iconmaster.minethecrafting.containers.MTCContainers;
+import info.iconmaster.minethecrafting.entities.MTCEntities;
+import info.iconmaster.minethecrafting.entities.RendererSinewSliver;
 import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
 import info.iconmaster.minethecrafting.models.CardLoader;
@@ -30,9 +32,11 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(MineTheCrafting.MOD_ID)
 @EventBusSubscriber(modid = MineTheCrafting.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
@@ -41,10 +45,13 @@ public class MineTheCrafting {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public MineTheCrafting() {
+        GeckoLib.initialize();
+        
         MTCBlocks.register();
         MTCTileEntities.register();
         MTCContainers.register();
         MTCItems.register();
+        MTCEntities.register();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -53,6 +60,8 @@ public class MineTheCrafting {
         ScreenManager.registerFactory(MTCContainers.MANA_TAP.get(), ScreenManaTap::new);
         ScreenManager.registerFactory(MTCContainers.SPELLCRAFTERS_DESK.get(), ScreenSpellcraftersDesk::new);
         ScreenManager.registerFactory(MTCContainers.ARTIFICERS_TABLE.get(), ScreenArtificersTable::new);
+
+        RenderingRegistry.registerEntityRenderingHandler(MTCEntities.SINEW_SLIVER.get(), RendererSinewSliver::new);
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -126,7 +126,7 @@ public enum Mana {
         }
 
         if (manasEmpty || nColorless > 0) {
-            result.append(new StringTextComponent(Integer.toString(nColorless)).mergeStyle(COLORLESS.color()));
+            result = new StringTextComponent(Integer.toString(nColorless)).mergeStyle(COLORLESS.color()).append(result);
         }
 
         return result;
