@@ -1,4 +1,4 @@
-# Mine: The Crafting
+# Magic: The Crafting
 
 A MtG-themed Minecraft mod.
 
