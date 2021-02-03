@@ -15,9 +15,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ScreenArtificersTable extends ContainerScreen<ContainerArtificersTable> {
-        private static final int PROGRESS_TOP_X = 78, PROGRESS_TOP_Y = 43, PROGRESS_BOTTOM_X = 76,
+        public static final int PROGRESS_TOP_X = 78, PROGRESS_TOP_Y = 43, PROGRESS_BOTTOM_X = 76,
                         PROGRESS_BOTTOM_Y = 84, PROGRESS_W = 17, PROGRESS_H = 19;
-        private static final ResourceLocation BACKGROUND = new ResourceLocation(MineTheCrafting.MOD_ID,
+        public static final ResourceLocation BACKGROUND = new ResourceLocation(MineTheCrafting.MOD_ID,
                         "textures/screen/artificing_table_bg.png"),
                         PROGRESS_TOP = new ResourceLocation(MineTheCrafting.MOD_ID,
                                         "textures/screen/artificing_table_progress_bar_upper.png"),
@@ -41,8 +41,7 @@ public class ScreenArtificersTable extends ContainerScreen<ContainerArtificersTa
 
                 getMinecraft().getTextureManager().bindTexture(BACKGROUND);
                 blit(ms, originX, originY, 0, 0, ContainerArtificersTable.GUI_WIDTH,
-                                ContainerArtificersTable.GUI_HEIGHT, ContainerArtificersTable.GUI_WIDTH,
-                                ContainerArtificersTable.GUI_HEIGHT);
+                                ContainerArtificersTable.GUI_HEIGHT, 256, 256);
 
                 float percentProgress = (((float) container.teData.progress) / TileEntityArtificersTable.MAX_PROGRESS);
                 int barHeight = (int) (PROGRESS_H * percentProgress);

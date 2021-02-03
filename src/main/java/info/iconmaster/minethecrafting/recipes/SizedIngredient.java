@@ -26,7 +26,11 @@ public class SizedIngredient extends Ingredient {
 
     @Override
     public ItemStack[] getMatchingStacks() {
-        return ingredient.getMatchingStacks();
+        ItemStack[] result = ingredient.getMatchingStacks();
+        for (ItemStack stack : result) {
+            stack.setCount(count);
+        }
+        return result;
     }
 
     public static SizedIngredient read(PacketBuffer packet) {

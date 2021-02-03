@@ -8,9 +8,12 @@ import java.util.Set;
 import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.MineTheCrafting;
 import info.iconmaster.minethecrafting.blocks.MTCBlocks;
+import info.iconmaster.minethecrafting.containers.ContainerArtificersTable;
 import info.iconmaster.minethecrafting.containers.ContainerSpellcraftersDesk;
 import info.iconmaster.minethecrafting.items.ItemCard;
+import info.iconmaster.minethecrafting.recipes.RecipeArtificing;
 import info.iconmaster.minethecrafting.recipes.RecipeManaTap;
+import info.iconmaster.minethecrafting.screens.ScreenArtificersTable;
 import info.iconmaster.minethecrafting.screens.ScreenManaTap;
 import info.iconmaster.minethecrafting.screens.ScreenSpellcraftersDesk;
 import mezz.jei.api.IModPlugin;
@@ -38,6 +41,7 @@ public class MTCPlugin implements IModPlugin {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(new CategoryManaTap(guiHelper));
         registry.addRecipeCategories(new CategorySpellcraftersDesk(guiHelper));
+        registry.addRecipeCategories(new CategoryArtificersTable(guiHelper));
     }
 
     @Override
@@ -54,12 +58,18 @@ public class MTCPlugin implements IModPlugin {
         for (ItemCard card : ItemCard.ALL_CARDS) {
             registry.addRecipes(Arrays.asList(card), CategorySpellcraftersDesk.ID);
         }
+
+        for (RecipeArtificing recipe : Minecraft.getInstance().world.getRecipeManager()
+                .getRecipesForType(RecipeArtificing.TYPE)) {
+            registry.addRecipes(Arrays.asList(recipe), CategoryArtificersTable.ID);
+        }
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registry) {
         registry.addRecipeCatalyst(new ItemStack(MTCBlocks.MANA_TAP.get()), CategoryManaTap.ID);
         registry.addRecipeCatalyst(new ItemStack(MTCBlocks.SPELLCRAFTERS_DESK.get()), CategorySpellcraftersDesk.ID);
+        registry.addRecipeCatalyst(new ItemStack(MTCBlocks.ARTIFICERS_TABLE.get()), CategoryArtificersTable.ID);
     }
 
     @Override
@@ -72,7 +82,14 @@ public class MTCPlugin implements IModPlugin {
                 ScreenSpellcraftersDesk.PROGRESS_H, CategorySpellcraftersDesk.ID);
         registry.addRecipeClickArea(ScreenSpellcraftersDesk.class, ContainerSpellcraftersDesk.MANAS_X + 18 * 3,
                 ScreenSpellcraftersDesk.PROGRESS_Y,
-                ScreenSpellcraftersDesk.PROGRESS_W - (ContainerSpellcraftersDesk.MANAS_X + 18 * 3),
+                ScreenSpellcraftersDesk.PROGRESS_X + ScreenSpellcraftersDesk.PROGRESS_W
+                        - (ContainerSpellcraftersDesk.MANAS_X + 18 * 3),
                 ScreenSpellcraftersDesk.PROGRESS_H, CategorySpellcraftersDesk.ID);
+        registry.addRecipeClickArea(ScreenArtificersTable.class, ScreenArtificersTable.PROGRESS_TOP_X,
+                ScreenArtificersTable.PROGRESS_TOP_Y - ContainerArtificersTable.HEIGHT_OFFSET,
+                ScreenArtificersTable.PROGRESS_W, ScreenArtificersTable.PROGRESS_H, CategoryArtificersTable.ID);
+        registry.addRecipeClickArea(ScreenArtificersTable.class, ScreenArtificersTable.PROGRESS_BOTTOM_X,
+                ScreenArtificersTable.PROGRESS_BOTTOM_Y - ContainerArtificersTable.HEIGHT_OFFSET,
+                ScreenArtificersTable.PROGRESS_W, ScreenArtificersTable.PROGRESS_H, CategoryArtificersTable.ID);
     }
 }
