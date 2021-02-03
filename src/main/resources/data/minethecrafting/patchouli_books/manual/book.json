@@ -1,0 +1,8 @@
+{
+	"name": "book.minethecrafting.name",
+	"landing_text": "book.minethecrafting.landingText",
+    "version": 1,
+    "model": "minethecrafting:manual",
+    "show_progress": false,
+    "creative_tab": "minethecrafting"
+}

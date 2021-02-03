@@ -13,6 +13,7 @@
     },
     "rewards": {
         "recipes": [
+            "minethecrafting:manual",
             "minethecrafting:manatap"
         ]
     }

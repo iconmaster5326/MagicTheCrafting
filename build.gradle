@@ -43,6 +43,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
+            // Patchouli does not like indev mixins in Forge
+            properties 'mixin.env.disableRefMap': 'true'
+
             mods {
                 minethecrafting {
                     source sourceSets.main
@@ -59,6 +62,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
+            // Patchouli does not like indev mixins in Forge
+            properties 'mixin.env.disableRefMap': 'true'
+
             mods {
                 minethecrafting {
                     source sourceSets.main
@@ -74,6 +80,9 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+
+            // Patchouli does not like indev mixins in Forge
+            properties 'mixin.env.disableRefMap': 'true'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'minethecrafting', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
@@ -92,6 +101,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib/' }
+    maven { url 'https://maven.blamejared.com' }
     maven { url 'https://dvs1.progwml6.com/files/maven/' }
     maven { url 'https://modmaven.k-4u.nl/' }
 }
@@ -102,6 +112,8 @@ dependencies {
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_version}:3.0.10")
     compileOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

@@ -24,5 +24,7 @@
     "manachar.minethecrafting.black": "B",
     "manachar.minethecrafting.red": "R",
     "manachar.minethecrafting.green": "G",
-    "itemGroup.minethecrafting": "Magic: The Crafting"
+    "itemGroup.minethecrafting": "Magic: The Crafting",
+    "book.minethecrafting.name": "Manabound Codex",
+    "book.minethecrafting.landingText": "Welcome to the manual for Magic: The Crafting! In this codex are many pages dedicated to the manipulation of mana and the traversal of planes..."
 }

@@ -1,0 +1,41 @@
+{
+    "name": "Mana",
+    "icon": "minethecrafting:green_mana",
+    "category": "minethecrafting:intro",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Mana is the raw magical energy of the planes, found condensed into leylines and tapped into the forms you see here. There are 5 basic colors of mana in the universe: White, blue, black, red, and green.$(br2)Mana is generated from the $(l:manatap)Mana Tap$(/l) and used in $(l:spellcasting)spellcasting$(/l), $(l:spellcrafters_desk)spellcrafting$(/l), $(l:artificers_table)artificing$(/l), and many other things."
+        },
+        {
+            "type": "spotlight",
+            "item": "minethecrafting:white_mana",
+            "text": "White is the color of law and order. It is best represented by the sprawling Plains."
+        },
+        {
+            "type": "spotlight",
+            "item": "minethecrafting:blue_mana",
+            "text": "Blue is the color of the mind and reason. It is best represented by the remote Islands."
+        },
+        {
+            "type": "spotlight",
+            "item": "minethecrafting:black_mana",
+            "text": "Black is the color of decay and destruction. It is best represented by the eternally rotting Swamps."
+        },
+        {
+            "type": "spotlight",
+            "item": "minethecrafting:red_mana",
+            "text": "Red is the color of passion and upheaval. It is best represented by the awe-inspiring Mountains."
+        },
+        {
+            "type": "spotlight",
+            "item": "minethecrafting:green_mana",
+            "text": "Green is the color of growth and nature. It is best represented by the overgrown Forests."
+        },
+        {
+            "type": "spotlight",
+            "item": "minethecrafting:colorless_mana",
+            "text": "Colorless mana is a special type of mana that is usable to pay only unaligned mana costs. It is the 'color' of machines and artificing, and occurs most in the mana-barren Deserts."
+        }
+    ]
+}

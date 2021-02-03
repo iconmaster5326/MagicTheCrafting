@@ -1,0 +1,15 @@
+{
+    "name": "Spellcasting",
+    "icon": "minethecrafting:card_lightning_bolt",
+    "category": "minethecrafting:intro",
+    "pages": [
+        {
+            "type": "text",
+            "text": "Once you have $(l:spellcrafters_desk)crafted a spell$(/l), the next step is to use it.$(br2)One may cast a spell by holding down the right mouse button. It will then begin drawing in the $(l:mana)mana$(/l) necesary to cast it; check the tooltips for how much $(l:mana)mana$(/l) it requires to cast a spell. Once a spell is ready to cast, it will begin to glow. Release the right mouse button to unleash the spell!"
+        },
+        {
+            "type": "text",
+            "text": "Be careful, however: If you release the button before a spell is ready to cast, you will waste the $(l:mana)mana$(/l). So take care when casting!"
+        }
+    ]
+}

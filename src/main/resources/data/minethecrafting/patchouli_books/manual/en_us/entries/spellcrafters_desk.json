@@ -1,0 +1,16 @@
+{
+    "name": "Spellcrafter's Desk",
+    "icon": "minethecrafting:spellcrafters_desk",
+    "category": "minethecrafting:intro",
+    "pages": [
+        {
+            "type": "text",
+            "text": "This writing desk has all the necesary tools to infuse $(l:blank_card)spells scrolls$(/l) with the 5 colors of $(l:mana)mana$(/l), allowing you to make powerful $(l:spellcasting)spells$(/l).$(br2)In the left goes your $(l:blank_card)blank spells$(/l), and in the center goes the $(l:mana)mana$(/l) you want to use. Crafting a $(l:spellcasting)spell$(/l) requires 6 $(l:mana)mana$(/l) of any color.$(br)The $(l:spellcasting)spell$(/l) produced is random, but is influenced by the $(l:mana)mana$(/l) you consume to produce it."
+        },
+        {
+            "type": "crafting",
+            "recipe": "minethecrafting:spellcrafters_desk",
+            "text": "look at me, I'm R&D"
+        }
+    ]
+}

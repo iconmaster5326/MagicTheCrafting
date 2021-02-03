@@ -1,0 +1,16 @@
+{
+    "name": "Mana Tap",
+    "icon": "minethecrafting:manatap",
+    "category": "minethecrafting:intro",
+    "pages": [
+        {
+            "type": "text",
+            "text": "The Mana Tap is a curious device, unique to this plane, that allows one to tap into the world's leylines and condense $(l:mana)mana$(/l) down into a tangible, physical form.$(br2)When placed down, it will begin automatically extracting $(l:mana)mana$(/l). What $(l:mana)mana$(/l) it can generate depends on the biome in which it is placed."
+        },
+        {
+            "type": "crafting",
+            "recipe": "minethecrafting:manatap",
+            "text": "if it produces green mana, it's also a treetap"
+        }
+    ]
+}

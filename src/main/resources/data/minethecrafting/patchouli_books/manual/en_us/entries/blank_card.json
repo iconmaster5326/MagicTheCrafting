@@ -1,0 +1,16 @@
+{
+    "name": "Blank Spell",
+    "icon": "minethecrafting:blank_card",
+    "category": "minethecrafting:intro",
+    "pages": [
+        {
+            "type": "text",
+            "text": "To start $(l:spellcasting)casting spells$(/l), you will first need a focus to store the magic in. These scrolls are perfect for the task.$(br2)They are mainly used in the $(l:spellcrafters_desk)Spellcrafter's Desk$(/l), but are useful in constructing other items as well."
+        },
+        {
+            "type": "crafting",
+            "recipe": "minethecrafting:blank_card",
+            "text": "a scroll made of cardboard"
+        }
+    ]
+}

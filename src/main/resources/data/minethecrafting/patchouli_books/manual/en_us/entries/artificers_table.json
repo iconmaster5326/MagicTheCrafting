@@ -1,0 +1,16 @@
+{
+    "name": "Artificer's Table",
+    "icon": "minethecrafting:artificers_table",
+    "category": "minethecrafting:intro",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(l:spellcrafters_desk)Making spells$(/l) is nice and all, but sometimes you want to use $(l:mana)mana$(/l) to conjure more physical items into the world. Enter the Artificer's Table. This imbues items with $(l:mana)mana$(/l) to produce artifacts.$(br2)On the outer edges are slots for $(l:mana)mana$(/l). The inner 4 slots are for items, and the result will be placed in the center."
+        },
+        {
+            "type": "crafting",
+            "recipe": "minethecrafting:artificers_table",
+            "text": "your personal artifactory"
+        }
+    ]
+}
