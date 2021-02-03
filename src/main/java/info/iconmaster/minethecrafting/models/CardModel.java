@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
+import info.iconmaster.minethecrafting.Mana;
 import info.iconmaster.minethecrafting.items.ItemCard;
 import info.iconmaster.minethecrafting.items.MTCItems;
 import net.minecraft.client.renderer.model.IBakedModel;
@@ -80,7 +81,7 @@ public class CardModel implements IModelGeometry<CardModel> {
                 @Nullable ClientWorld world, @Nullable LivingEntity entityIn) {
             ItemCard card = (ItemCard) stack.getItem();
             return new ItemLayerModel(ImmutableList.of(
-                    new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, card.color.cardFrontTextureLocation()),
+                    new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, Mana.cardFrontTextureLocation(card.colors)),
                     new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, model.cardArt))).bake(owner, bakery,
                             textureLoader, transform, ItemOverrideList.EMPTY, modelLocation);
         }

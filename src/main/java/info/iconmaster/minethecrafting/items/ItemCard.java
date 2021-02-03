@@ -39,14 +39,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public abstract class ItemCard extends Item {
     public final int tier;
-    public final Mana color;
+    public final List<Mana> colors;
     public final List<Mana> manaCost;
     public static final Set<ItemCard> ALL_CARDS = new HashSet<>();
 
-    protected ItemCard(int tier, Mana color, List<Mana> manaCost) {
+    protected ItemCard(int tier, List<Mana> colors, List<Mana> manaCost) {
         super(new Item.Properties().maxStackSize(1).group(MineTheCrafting.ITEM_GROUP));
         this.tier = tier;
-        this.color = color;
+        this.colors = colors;
         this.manaCost = manaCost;
         ALL_CARDS.add(this);
     }

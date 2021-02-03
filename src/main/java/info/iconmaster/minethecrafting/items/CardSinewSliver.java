@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class CardSinewSliver extends ItemCard {
     public CardSinewSliver() {
-        super(0, Mana.WHITE, Arrays.asList(Mana.WHITE, Mana.COLORLESS));
+        super(0, Arrays.asList(Mana.WHITE), Arrays.asList(Mana.WHITE, Mana.COLORLESS));
     }
 
     @Override

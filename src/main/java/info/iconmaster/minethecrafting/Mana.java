@@ -140,4 +140,32 @@ public enum Mana {
         }
         return null;
     }
+
+    private static final ResourceLocation MULTICOLOR_LOCATION = new ResourceLocation(MineTheCrafting.MOD_ID,
+            "item/multicolor_card_front");
+
+    public static ResourceLocation cardFrontTextureLocation(List<Mana> manas) {
+        switch (manas.size()) {
+            case 0:
+                return COLORLESS.cardFrontTextureLocation();
+            case 1:
+                return manas.get(0).cardFrontTextureLocation();
+            default:
+                return MULTICOLOR_LOCATION;
+        }
+    }
+
+    private static final ResourceLocation FULL_MULTICOLOR_LOCATION = new ResourceLocation(MineTheCrafting.MOD_ID,
+            "textures/item/multicolor_card_front.png");
+
+    public static ResourceLocation fullCardFrontTextureLocation(List<Mana> manas) {
+        switch (manas.size()) {
+            case 0:
+                return COLORLESS.fullCardFrontTextureLocation();
+            case 1:
+                return manas.get(0).fullCardFrontTextureLocation();
+            default:
+                return FULL_MULTICOLOR_LOCATION;
+        }
+    }
 }
