@@ -113,7 +113,121 @@
 			}
 		},
 		"animation.sinew_sliver.move": {
-			"loop": true
+			"loop": true,
+			"animation_length": 2.12,
+			"bones": {
+				"torso": {
+					"rotation": {
+						"0.0": {
+							"vector": [47.5, 0, 0]
+						},
+						"2.08": {
+							"vector": [47.5, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"upper_tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [-55, -27.5, 30]
+						},
+						"1.04": {
+							"vector": [-55, 40, -47.5],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [-55, -27.5, 30],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"lower_tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [7.5, 75, 0]
+						},
+						"0.48": {
+							"vector": [7.5, -37.5, 0]
+						},
+						"1.04": {
+							"vector": [7.5, -75, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.56": {
+							"vector": [7.5, 27.5, 0],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [7.5, 75, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"neck": {
+					"rotation": {
+						"0.0": {
+							"vector": [-22.5, 0, 0]
+						},
+						"2.08": {
+							"vector": [-22.5, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [-15, 0, 0]
+						},
+						"1.04": {
+							"vector": [-7.5, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [-15, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"upper_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-40, 0, 0]
+						},
+						"1.04": {
+							"vector": [-52.5, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"2.08": {
+							"vector": [-40, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"lower_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [47.5, 0, 0]
+						},
+						"2.08": {
+							"vector": [47.5, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"armblade": {
+					"rotation": {
+						"0.0": {
+							"vector": [87.5, 0, 0]
+						},
+						"2.08": {
+							"vector": [87.5, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				}
+			}
 		}
 	}
 }
